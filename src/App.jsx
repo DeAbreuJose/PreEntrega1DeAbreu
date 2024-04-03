@@ -10,7 +10,7 @@ function App() {
   return (
     <>
     <Navbar />
-    <ItemListContainer />
+    <ItemListContainer lista="Lista de Articulos" />
     </>
   )
 }

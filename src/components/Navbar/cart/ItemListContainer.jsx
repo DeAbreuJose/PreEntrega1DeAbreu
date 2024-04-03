@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ItemListContainer() {
+export default function ItemListContainer({lista}) {
   return (
     <div>
       <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 dark:bg-gray-50 dark:text-gray-800">
