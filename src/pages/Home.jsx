@@ -1,4 +1,5 @@
 import React from 'react';
+import productos from './productos.json';
 
 function Home() {
   return (

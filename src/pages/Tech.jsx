@@ -1,10 +1,12 @@
 import React from 'react';
+import ItemListContainer from './ItemListContainer';
+import productos from './productos.json';
 
 function Tech() {
   return (
     <div>
       <h1>Tech Page</h1>
-      <p>Explore the latest tech gadgets!</p>
+      
     </div>
   );
 }
