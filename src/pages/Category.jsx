@@ -8,7 +8,7 @@ function Category() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('https://raw.githubusercontent.com/DeAbreuJose/PreEntrega2DeAbreu/main/src/components/Navbar/cart/productos.json'); // Assuming data.json is in public folder
+            const response = await fetch('https://raw.githubusercontent.com/DeAbreuJose/PreEntrega2DeAbreu/main/src/components/Navbar/cart/productos.json'); 
             const products = await response.json();
             const filteredProducts = products.filter(item => item.category === categoryId)
             setElements(filteredProducts)
