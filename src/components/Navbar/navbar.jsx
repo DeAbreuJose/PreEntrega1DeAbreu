@@ -1,21 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import CartWidget from './cart/CardWidget';
+import { contexto } from '../../Context';
+
 
 export default function Navbar() {
-  // Usa el estado para almacenar los productos
-  const [categories, setCategories] = useState([]);
 
-  // Usa useEffect para cargar los productos al inicio
+ const valorActual = useContext(contexto)
+ 
+  
+  const [categories, setCategories] = useState([]);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://raw.githubusercontent.com/DeAbreuJose/PreEntrega2DeAbreu/main/src/components/Navbar/cart/productos.json'); // Assuming data.json is in public folder
+        const response = await fetch('https://raw.githubusercontent.com/DeAbreuJose/PreEntrega2DeAbreu/main/src/components/Navbar/cart/productos.json'); 
         const items = await response.json();
         setCategories(items.map(item => item.category))
-        console.log(jsonData)
+        
       } catch (error) {
-        console.error('Error fetching data:', error);
+        
       }
     };
 
@@ -28,7 +32,7 @@ export default function Navbar() {
         <div className="container flex justify-between h-16 mx-auto">
           <Link to="/" aria-label="Back to homepage" className="flex items-center p-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-8 h-8 dark:text-violet-600">
-               
+
             </svg>
           </Link>
 
@@ -45,17 +49,16 @@ export default function Navbar() {
                 <Link to={`/category/${category}`} className="flex items-center px-4 -mb-1 border-b-2 dark:border-">{category}</Link>
               </li>
             ))}
+        
           </ul>
 
-          <div className="items-center flex-shrink-0 hidden lg:flex">
-           
+          <div className="items-center flex-shrink-0 hidden lg:flex">    
           </div>
 
-          <button className="p-4 lg:hidden">
-           
-          </button>
 
-          <CartWidget />
+<CartWidget/>
+          
+         
         </div>
       </header>
     </div>

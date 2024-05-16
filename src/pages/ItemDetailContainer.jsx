@@ -1,10 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom'
+import Contador from '../components/Navbar/cart/Contador';
+import useCart from '../components/Navbar/cart/useCart';
 
-export default function ItemDetailContainer() {
 
+export default function ItemDetailContainer(props) {
+
+
+
+  const valorActual = useCart();
+  
     const { id } = useParams();
     const [product, setProduct] = useState(null);
+    const handleConfirm = (numero) => {
+      valorActual.agregarAlCarrito(numero,product)
+    }
+
   
     useEffect(() => {
        
@@ -30,10 +41,11 @@ export default function ItemDetailContainer() {
       
       return (
         <div>
+          <img src={product.image} alt={product.name} />   
           <h2>{product.name}</h2>
           <p>Category: {product.category}</p>
           <p>Price: {product.price}€</p>
-          <img src={product.image} alt={product.name} />   
+          <Contador handleConfirm={handleConfirm}/>
         </div>
       );
     }
